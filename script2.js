@@ -81,7 +81,7 @@ function recupererNomsEquipes() {
 const listeAlbums = document.getElementById('listeAlbums');
 
 // Chemin vers le dossier principal des albums
-const cheminAlbums = 'BlindTest/Album';
+const cheminAlbums = 'Album';
 
 // Chargez dynamiquement la liste des albums
 function chargerAlbums() {
@@ -93,7 +93,7 @@ function chargerAlbums() {
    albums.forEach((album) => {
       const elementAlbum = document.createElement('div');
       elementAlbum.classList.add('album');
-      elementAlbum.innerHTML = `<img src="${cheminAlbums}/${album}/pochette.jpg" alt="${album}" />
+      elementAlbum.innerHTML = `<img src="/${cheminAlbums}/${album}/pochette.jpg" alt="${album}" />
                                 <p>${album}</p>`;
       elementAlbum.addEventListener('click', () => chargerPlaylist(album));
       listeAlbums.appendChild(elementAlbum);
