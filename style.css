@@ -1,0 +1,78 @@
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin: 50px;
+    background-color: #2F3D46;
+    color: #CAD2C5;
+}
+
+h1 {
+    color: #527970;
+}
+
+#points {
+    font-size: 18px;
+    font-weight: bold;
+    color: #527970;
+    margin-bottom: 20px;
+}
+
+button {
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px; /* Coins arrondis */
+    margin: 5px;
+}
+
+#nomsEquipes {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.equipe-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #354E52;
+}
+
+.equipe {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.nom-equipe {
+    font-size: 1.5em;
+    margin-right: 20px;
+    color: #CAD2C5;
+}
+
+.points {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-right: 20px;
+    margin-left: 20px;
+    color: #CAD2C5;
+}
+
+.boutonPoints {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.boutonPoints button {
+    font-size: 1em;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 8px; /* Coins arrondis */
+    background-color: #84A98D;
+    color: #2F3D46;
+}
