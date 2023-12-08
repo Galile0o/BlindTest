@@ -100,7 +100,7 @@ function chargerAlbums() {
    });
 }
 function chargerPlaylist(nomAlbum) {
-    const cheminListe = `BlindTest/Album/${nomAlbum}/list.json`;
+    const cheminListe = `/Album/${nomAlbum}/list.json`;
 
     // Utilisez fetch pour récupérer le fichier JSON
     fetch(cheminListe)
