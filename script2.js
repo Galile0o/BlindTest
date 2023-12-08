@@ -93,14 +93,14 @@ function chargerAlbums() {
    albums.forEach((album) => {
       const elementAlbum = document.createElement('div');
       elementAlbum.classList.add('album');
-      elementAlbum.innerHTML = `<img src="/${cheminAlbums}/${album}/pochette.jpg" alt="${album}" />
+      elementAlbum.innerHTML = `<img src="${cheminAlbums}/${album}/pochette.jpg" alt="${album}" />
                                 <p>${album}</p>`;
       elementAlbum.addEventListener('click', () => chargerPlaylist(album));
       listeAlbums.appendChild(elementAlbum);
    });
 }
 function chargerPlaylist(nomAlbum) {
-    const cheminListe = `/Album/${nomAlbum}/list.json`;
+    const cheminListe = `Album/${nomAlbum}/list.json`;
 
     // Utilisez fetch pour récupérer le fichier JSON
     fetch(cheminListe)
