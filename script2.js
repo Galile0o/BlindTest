@@ -77,6 +77,65 @@ function recupererNomsEquipes() {
     // Retourne un tableau vide par défaut
     return [];
 }
+// Obtenez la référence de la div où vous afficherez les albums
+const listeAlbums = document.getElementById('listeAlbums');
+
+// Chemin vers le dossier principal des albums
+const cheminAlbums = 'Album';
+
+// Chargez dynamiquement la liste des albums
+function chargerAlbums() {
+   // Utilisez une méthode pour obtenir la liste des albums (par exemple, AJAX ou fetch)
+   // En supposant que vous avez déjà une liste des noms d'albums
+   const albums = ['mix', 'moderat'];
+
+   // Créez les éléments HTML pour chaque album
+   albums.forEach((album) => {
+      const elementAlbum = document.createElement('div');
+      elementAlbum.classList.add('album');
+      elementAlbum.innerHTML = `<img src="${cheminAlbums}/${album}/pochette.jpg" alt="${album}" />
+                                <p>${album}</p>`;
+      elementAlbum.addEventListener('click', () => chargerPlaylist(album));
+      listeAlbums.appendChild(elementAlbum);
+   });
+}
+function chargerPlaylist(nomAlbum) {
+    const cheminListe = `Album/${nomAlbum}/list.json`;
+
+    // Utilisez fetch pour récupérer le fichier JSON
+    fetch(cheminListe)
+        .then(response => response.json())
+        .then(data => afficherPlaylist(data))
+        .catch(error => console.error('Erreur lors du chargement du fichier JSON', error));
+}
+
+function afficherPlaylist(playlist) {
+    // Accédez aux données de la playlist (nomAlbum et pistes)
+    const nomAlbum = playlist.nomAlbum;
+    const pistes = playlist.pistes;
+
+    // Créez une div pour afficher les informations de la playlist
+    const playlistInfo = document.createElement('div');
+    playlistInfo.innerHTML = `<h2>${nomAlbum}</h2>`;
+    
+    // Créez une div pour afficher les informations de chaque piste
+    const pistesDiv = document.createElement('div');
+    
+    pistes.forEach(piste => {
+        const pisteElement = document.createElement('div');
+        pisteElement.innerHTML = `<p>${piste.titre} - ${piste.auteur}</p>`;
+        pistesDiv.appendChild(pisteElement);
+    });
+
+    // Ajoutez la div des pistes à la div principale de la playlist
+    playlistInfo.appendChild(pistesDiv);
+
+    // Ajoutez la div principale à l'élément de votre choix dans votre interface (par exemple, sous la liste des albums)
+    const playlistContainer = document.getElementById('playlistContainer'); // Remplacez 'playlistContainer' par l'ID approprié
+    playlistContainer.innerHTML = ''; // Assurez-vous de vider le contenu précédent
+    playlistContainer.appendChild(playlistInfo);
+}
+
 
 document.addEventListener("DOMContentLoaded", function() {
     const nomsEquipes = recupererNomsEquipes();
@@ -91,7 +150,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Affiche les équipes avec leurs points
     afficherEquipes();
-
+    chargerAlbums();
     function afficherEquipes() {
         // Efface le contenu précédent
         nomsEquipesElement.innerHTML = "";
@@ -120,7 +179,7 @@ document.addEventListener("DOMContentLoaded", function() {
             pointsEquipeElement.classList.add("points");
             pointsEquipeElement.textContent = equipe.points;
             equipeElement.appendChild(pointsEquipeElement);
-            
+
             const baisserPointsButton = document.createElement("button");
             baisserPointsButton.textContent = "-";
             baisserPointsButton.addEventListener("click", () => changerPoints(index, -1));
