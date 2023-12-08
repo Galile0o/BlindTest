@@ -81,7 +81,7 @@ function recupererNomsEquipes() {
 const listeAlbums = document.getElementById('listeAlbums');
 
 // Chemin vers le dossier principal des albums
-const cheminAlbums = 'Album';
+const cheminAlbums = '/BlindTest/Album';
 
 // Chargez dynamiquement la liste des albums
 function chargerAlbums() {
@@ -100,7 +100,7 @@ function chargerAlbums() {
    });
 }
 function chargerPlaylist(nomAlbum) {
-    const cheminListe = `Album/${nomAlbum}/list.json`;
+    const cheminListe = `/BlindTest/Album/${nomAlbum}/list.json`;
 
     // Utilisez fetch pour récupérer le fichier JSON
     fetch(cheminListe)
