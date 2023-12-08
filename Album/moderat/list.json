@@ -1,0 +1,18 @@
+{
+    "nomAlbum": "Moderat",
+    "pistes": [
+        {
+            "titre": "Ghostmother",
+            "auteur": "Moderat",
+            "duree": 357, 
+            "autreInfo": "Autres informations sur la première piste"
+        },
+        {
+            "titre": "Reminder",
+            "auteur": "Moderat",
+            "duree": 234, 
+            "autreInfo": "Autres informations sur la deuxième piste"
+        }
+
+    ]
+}
