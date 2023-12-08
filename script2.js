@@ -114,28 +114,30 @@ function afficherPlaylist(playlist) {
     const nomAlbum = playlist.nomAlbum;
     const pistes = playlist.pistes;
 
-    // Créez une div pour afficher les informations de la playlist
-    const playlistInfo = document.createElement('div');
-    playlistInfo.innerHTML = `<h2>${nomAlbum}</h2>`;
-    
-    // Créez une div pour afficher les informations de chaque piste
-    const pistesDiv = document.createElement('div');
-    
-    pistes.forEach(piste => {
-        const pisteElement = document.createElement('div');
-        pisteElement.innerHTML = `<p>${piste.titre} - ${piste.auteur}</p>`;
-        pistesDiv.appendChild(pisteElement);
-    });
+    // Obtenez le premier élément de la playlist
+    const premierTitre = pistes[0];
 
-    // Ajoutez la div des pistes à la div principale de la playlist
-    playlistInfo.appendChild(pistesDiv);
+    // Créez une div pour afficher les informations du premier titre
+    const premierTitreDiv = document.createElement('div');
+    premierTitreDiv.innerHTML = `<h2>${nomAlbum}</h2>`;
+    premierTitreDiv.innerHTML += `<p>${premierTitre.titre} - ${premierTitre.auteur}</p>`;
 
-    // Ajoutez la div principale à l'élément de votre choix dans votre interface (par exemple, sous la liste des albums)
-    const playlistContainer = document.getElementById('playlistContainer'); // Remplacez 'playlistContainer' par l'ID approprié
+    // Ajoutez la div du premier titre à l'élément de votre choix dans votre interface
+    const playlistContainer = document.getElementById('playlistContainer'); // Assurez-vous que cet élément existe dans votre HTML
     playlistContainer.innerHTML = ''; // Assurez-vous de vider le contenu précédent
-    playlistContainer.appendChild(playlistInfo);
+    playlistContainer.appendChild(premierTitreDiv);
+
+    // Lancez l'écoute du premier morceau
+    lancerEcoute(premierTitre);
 }
 
+// Fonction pour lancer l'écoute d'un morceau
+function lancerEcoute(titre) {
+    // Vous pouvez ajouter ici le code pour lancer l'écoute du morceau,
+    // par exemple, en utilisant l'API Web Audio ou d'autres méthodes de lecture audio.
+    console.log(`Lancement du morceau : ${titre.titre} - ${titre.auteur}`);
+    // Ajoutez ici le code pour lancer la lecture audio
+}
 
 document.addEventListener("DOMContentLoaded", function() {
     const nomsEquipes = recupererNomsEquipes();
