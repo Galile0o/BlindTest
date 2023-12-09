@@ -100,22 +100,25 @@ function chargerAlbums() {
    });
 }
 let nomAlbum;
-function chargerPlaylist(nomAlbum) {
+let pistes;
+function chargerPlaylist(nomAlbumtemp) {
+    nomAlbum = nomAlbumtemp;
     const cheminListe = `Album/${nomAlbum}/list.json`;
-    nomAlbum = nomAlbum;
     // Utilisez fetch pour récupérer le fichier JSON
     fetch(cheminListe)
         .then(response => response.json())
-        .then(data => afficherPlaylist(data.pistes,0))
+        .then(data => {
+        pistes = data.pistes;
+        afficherPlaylist(0);
+    })
         .catch(error => console.error('Erreur lors du chargement du fichier JSON', error));
 }
-let pistes;
+
 // Définissez une variable globale pour suivre l'index de la piste actuelle
 let indexPisteActuelle = 0;
 
-function afficherPlaylist(pistes,index) {
+function afficherPlaylist(index) {
     // Accédez aux données de la playlist (nomAlbum et pistes)
-    pistes = pistes;
 
     // Obtenez le premier élément de la playlist
     const premierTitre = pistes[index];
@@ -192,7 +195,7 @@ function lancerEcoute(titre) {
     // Fonction pour jouer la piste actuelle
     function jouerPisteActuelle() {
         const pisteActuelle = pistes[indexPisteActuelle];
-        afficherPlaylist(pistes,pisteActuelle);
+        afficherPlaylist(pisteActuelle);
     }
 
     // Barre de temps
