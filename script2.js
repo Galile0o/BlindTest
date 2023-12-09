@@ -257,7 +257,7 @@ function reculerPistePrecedente() {
 
     lecteurAudio.src = `Album/${titre.album}/${titre.titre}.mp3`;
 
-    lecteurAudio.addEventListener('loadedmetadata', mettreAJourBarreDeTemps);
+    lecteurAudio.addEventListener('timeupdate', mettreAJourBarreDeTemps);
     lecteurAudio.addEventListener('ended', passerPisteSuivante);
     boutonPlay.addEventListener('click', toggleLecture);
     boutonPasser.addEventListener('click', passerPisteSuivante);
