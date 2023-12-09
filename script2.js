@@ -120,6 +120,7 @@ function chargerPlaylist(nomAlbumtemp) {
 
 
 function afficherPlaylist(index) {
+    console.log(index);
     // Assurez-vous que l'index est dans les limites de la liste des pistes
     if (index >= 0 && index < pistes.length) {
         // Obtenez l'élément de la playlist avec l'index donné
