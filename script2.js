@@ -1,13 +1,5 @@
 let points = 0;
 
-function jouerExtrait() {
-    // Ici, vous devriez mettre le code pour jouer un extrait de chanson via l'API Spotify
-    // N'oubliez pas de mettre à jour le score en fonction de la réponse du joueur
-    // (Simulé ici avec une réponse correcte à des fins de démonstration)
-    const reponseCorrecte = true;
-    attribuerPoints(reponseCorrecte);
-}
-
 function attribuerPoints(reponseCorrecte) {
     if (reponseCorrecte) {
         points += 1;
