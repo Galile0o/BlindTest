@@ -138,7 +138,7 @@ function lancerEcoute(titre) {
     const request = new XMLHttpRequest();
 
     // Chemin vers le fichier audio
-    const cheminAudio = `Album/${titre.album}/musiques/${titre.titre}.mp3`;
+    const cheminAudio = `Album/${titre.album}/${titre.titre}.mp3`;
 
     request.open('GET', cheminAudio, true);
     request.responseType = 'arraybuffer';
