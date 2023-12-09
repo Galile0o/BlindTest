@@ -193,9 +193,8 @@ function lancerEcoute(titre) {
     }
 
     // Fonction pour jouer la piste actuelle
-    function jouerPisteActuelle() {
-        const pisteActuelle = pistes[indexPisteActuelle];
-        afficherPlaylist(pisteActuelle);
+    function jouerPisteActuelle() {   
+        afficherPlaylist(indexPisteActuelle);
     }
 
     // Barre de temps
