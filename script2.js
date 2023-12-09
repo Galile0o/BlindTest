@@ -210,7 +210,7 @@ function reculerPistePrecedente() {
 
     function toggleLecture() {
         document.getElementById('boutonPlay').disabled = true;
-        console.log("pause/play");
+        console.log("pause/playtest");
         if (lecteurAudio.paused) {
             lecteurAudio.play();
         } else {
