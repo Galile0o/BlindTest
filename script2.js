@@ -231,7 +231,7 @@ function reculerPistePrecedente() {
         }
         enCoursDeLecturePause = true;
         document.getElementById('boutonPlay').disabled = true;
-        console.log("pause/playtest2");
+        console.log("pause/playtest3");
         if (lecteurAudio.paused) {
             lecteurAudio.play();
         } else {
