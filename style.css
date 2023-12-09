@@ -87,7 +87,11 @@ button {
     margin: 10px;
     color: #CAD2C5;
 }
-
+#barreDeTempsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 #barreDeTemps {
     width: 80%;
     margin: 0 auto;
@@ -109,7 +113,7 @@ button {
 /* Style pour le bouton Play/Pause */
 #boutonPlay {
     background-color: #527970; /* Nouvelle couleur de fond */
-    color: #2F3D46; /* Nouvelle couleur du texte */
+    color: #CAD2C5; /* Nouvelle couleur du texte */
 }
 
 /* Style pour le bouton Passer */
