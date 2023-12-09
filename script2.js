@@ -156,12 +156,12 @@ function lancerEcoute(titre) {
     }
 
     function passerPisteSuivante() {
-        indexPisteActuelle = (indexPisteActuelle + 1) % pistes.length;
+        indexPisteActuelle = indexPisteActuelle + 1;
         jouerPisteActuelle();
     }
 
     function reculerPistePrecedente() {
-        indexPisteActuelle = (indexPisteActuelle - 1 + pistes.length) % pistes.length;
+        indexPisteActuelle = indexPisteActuelle - 1;
         jouerPisteActuelle();
     }
 
