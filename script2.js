@@ -116,26 +116,29 @@ function chargerPlaylist(nomAlbumtemp) {
 
 // Définissez une variable globale pour suivre l'index de la piste actuelle
 let indexPisteActuelle = 0;
-
 function afficherPlaylist(index) {
-    // Accédez aux données de la playlist (nomAlbum et pistes)
+    // Assurez-vous que l'index est dans les limites de la liste des pistes
+    if (index >= 0 && index < pistes.length) {
+        // Obtenez l'élément de la playlist avec l'index donné
+        const premierTitre = pistes[index];
 
-    // Obtenez le premier élément de la playlist
-    const premierTitre = pistes[index];
+        // Créez une div pour afficher les informations du premier titre
+        const premierTitreDiv = document.createElement('div');
+        premierTitreDiv.innerHTML = `<h2>${nomAlbum}</h2>`;
+        premierTitreDiv.innerHTML += `<p>${premierTitre.titre} - ${premierTitre.auteur}</p>`;
 
-    // Créez une div pour afficher les informations du premier titre
-    const premierTitreDiv = document.createElement('div');
-    premierTitreDiv.innerHTML = `<h2>${nomAlbum}</h2>`;
-    premierTitreDiv.innerHTML += `<p>${premierTitre.titre} - ${premierTitre.auteur}</p>`;
+        // Ajoutez la div du premier titre à l'élément de votre choix dans votre interface
+        const playlistContainer = document.getElementById('playlistContainer');
+        playlistContainer.innerHTML = '';
+        playlistContainer.appendChild(premierTitreDiv);
 
-    // Ajoutez la div du premier titre à l'élément de votre choix dans votre interface
-    const playlistContainer = document.getElementById('playlistContainer'); // Assurez-vous que cet élément existe dans votre HTML
-    playlistContainer.innerHTML = ''; // Assurez-vous de vider le contenu précédent
-    playlistContainer.appendChild(premierTitreDiv);
-
-    // Lancez l'écoute du premier morceau
-    lancerEcoute(premierTitre);
+        // Lancez l'écoute du premier morceau
+        lancerEcoute(premierTitre);
+    } else {
+        console.error('L\'index est en dehors des limites de la liste des pistes.');
+    }
 }
+
 
 function lancerEcoute(titre) {
     const lecteurAudio = document.getElementById('lecteurAudio');
