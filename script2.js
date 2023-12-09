@@ -159,21 +159,22 @@ function lancerEcoute(titre) {
         const pourcentage = (lecteurAudio.currentTime / lecteurAudio.duration) * 100;
         barreDeTemps.value = pourcentage;
     
-        // Mise à jour du temps actuel
-        const tempsActuel = formatTemps(lecteurAudio.currentTime);
-        const tempsTotal = formatTemps(lecteurAudio.duration);
+        // Mettre à jour le temps actuel
+        const tempsActuelElement = document.getElementById('tempsActuel');
+        tempsActuelElement.textContent = formatTemps(lecteurAudio.currentTime);
     
-        // Affichage du temps actuel et total
-        document.getElementById('tempsActuel').innerText = tempsActuel;
-        document.getElementById('tempsTotal').innerText = tempsTotal;
+        // Mettre à jour le temps total
+        const tempsTotalElement = document.getElementById('tempsTotal');
+        tempsTotalElement.textContent = formatTemps(lecteurAudio.duration);
     }
     
-    // Fonction pour formater le temps au format "mm:ss"
-    function formatTemps(tempsEnSecondes) {
-        const minutes = Math.floor(tempsEnSecondes / 60);
-        const secondes = Math.floor(tempsEnSecondes % 60);
+    // Fonction pour formater le temps (par exemple, de secondes à mm:ss)
+    function formatTemps(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secondes = Math.floor(seconds % 60);
         return `${minutes}:${secondes < 10 ? '0' : ''}${secondes}`;
     }
+
 
     function passerPisteSuivante() {
     // Vérifier si une opération de passage est déjà en cours
