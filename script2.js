@@ -147,66 +147,61 @@ function lancerEcoute(titre) {
     const boutonReculer = document.getElementById('boutonReculer');
     const barreDeTemps = document.getElementById('barreDeTemps');
 
-    // Assurez-vous que le lecteur audio est prêt
-    lecteurAudio.src = `Album/${titre.album}/${titre.titre}.mp3`;
-
-    // Fonction pour mettre à jour la barre de temps
     function mettreAJourBarreDeTemps() {
         const pourcentage = (lecteurAudio.currentTime / lecteurAudio.duration) * 100;
         barreDeTemps.value = pourcentage;
     }
 
-    // Événement lorsqu'une nouvelle piste est chargée
-    lecteurAudio.addEventListener('loadedmetadata', () => {
-        barreDeTemps.max = lecteurAudio.duration;
-        mettreAJourBarreDeTemps();
-    });
-
-    // Événement pendant la lecture de la piste
-    lecteurAudio.addEventListener('timeupdate', mettreAJourBarreDeTemps);
-
-    // Événement lorsque la piste est terminée
-    lecteurAudio.addEventListener('ended', () => passerPisteSuivante());
-
-    // Bouton Play/Pause
-    boutonPlay.addEventListener('click', () => {
-        if (lecteurAudio.paused) {
-            lecteurAudio.play();
-        } else {
-            lecteurAudio.pause();
-        }
-    });
-
-    // Bouton Passer à la piste suivante
-    boutonPasser.addEventListener('click', passerPisteSuivante);
-
-    // Bouton Reculer à la piste précédente
-    boutonReculer.addEventListener('click', reculerPistePrecedente);
-
-    // Fonction pour passer à la piste suivante
     function passerPisteSuivante() {
         indexPisteActuelle = (indexPisteActuelle + 1) % pistes.length;
         jouerPisteActuelle();
     }
 
-    // Fonction pour reculer à la piste précédente
     function reculerPistePrecedente() {
         indexPisteActuelle = (indexPisteActuelle - 1 + pistes.length) % pistes.length;
         jouerPisteActuelle();
     }
 
-    // Fonction pour jouer la piste actuelle
-    function jouerPisteActuelle() {   
+    function jouerPisteActuelle() {
         afficherPlaylist(indexPisteActuelle);
     }
 
-    // Barre de temps
-    barreDeTemps.addEventListener('input', () => {
+    function ajusterTemps() {
         const pourcentage = barreDeTemps.value / 100;
         lecteurAudio.currentTime = pourcentage * lecteurAudio.duration;
+    }
+
+    function toggleLecture() {
+        if (lecteurAudio.paused) {
+            lecteurAudio.play();
+        } else {
+            lecteurAudio.pause();
+        }
+    }
+
+    // Supprimer les écouteurs d'événements existants
+    lecteurAudio.removeEventListener('loadedmetadata', mettreAJourBarreDeTemps);
+    lecteurAudio.removeEventListener('timeupdate', mettreAJourBarreDeTemps);
+    lecteurAudio.removeEventListener('ended', passerPisteSuivante);
+    boutonPlay.removeEventListener('click', toggleLecture);
+    boutonPasser.removeEventListener('click', passerPisteSuivante);
+    boutonReculer.removeEventListener('click', reculerPistePrecedente);
+    barreDeTemps.removeEventListener('input', ajusterTemps);
+
+    lecteurAudio.src = `Album/${titre.album}/${titre.titre}.mp3`;
+
+    lecteurAudio.addEventListener('loadedmetadata', () => {
+        barreDeTemps.max = lecteurAudio.duration;
+        mettreAJourBarreDeTemps();
     });
 
-    // Démarrez la lecture
+    lecteurAudio.addEventListener('timeupdate', mettreAJourBarreDeTemps);
+    lecteurAudio.addEventListener('ended', passerPisteSuivante);
+    boutonPlay.addEventListener('click', toggleLecture);
+    boutonPasser.addEventListener('click', passerPisteSuivante);
+    boutonReculer.addEventListener('click', reculerPistePrecedente);
+    barreDeTemps.addEventListener('input', ajusterTemps);
+
     lecteurAudio.play();
 }
 
