@@ -5,14 +5,14 @@
             "titre": "Ghostmother",
             "auteur": "Moderat",
             "duree": 357,
-            "album": "Moderat",
+            "album": "moderat",
             "autreInfo": "Autres informations sur la première piste"
         },
         {
             "titre": "Reminder",
             "auteur": "Moderat",
             "duree": 234, 
-            "album": "Moderat",
+            "album": "moderat",
             "autreInfo": "Autres informations sur la deuxième piste"
         }
 
