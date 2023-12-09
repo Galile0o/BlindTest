@@ -81,3 +81,45 @@ button {
     justify-content: space-around;  /* ou d'autres valeurs comme space-between selon vos préférences */
     align-items: center;  /* alignez les éléments au centre verticalement si nécessaire */
 }
+#tempsActuel,
+#tempsTotal {
+    font-size: 1.5em;
+    margin: 10px;
+    color: #CAD2C5;
+}
+
+#barreDeTemps {
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Ajoutez ces styles aux boutons existants */
+button {
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    margin: 5px;
+    padding: 8px 16px; /* Ajout de rembourrage */
+    background-color: #84A98D; /* Couleur de fond */
+    color: #2F3D46; /* Couleur du texte */
+}
+
+/* Style pour le bouton Play/Pause */
+#boutonPlay {
+    background-color: #6A8E82; /* Nouvelle couleur de fond */
+    color: #2F3D46; /* Nouvelle couleur du texte */
+}
+
+/* Style pour le bouton Passer */
+#boutonPasser {
+    background-color: #527970; /* Nouvelle couleur de fond */
+    color: #CAD2C5; /* Nouvelle couleur du texte */
+}
+
+/* Style pour le bouton Reculer */
+#boutonReculer {
+    background-color: #527970; /* Nouvelle couleur de fond */
+    color: #CAD2C5; /* Nouvelle couleur du texte */
+}
