@@ -134,7 +134,6 @@ function afficherPlaylist(playlist) {
     lancerEcoute(premierTitre);
 }
 
-// Fonction pour lancer l'écoute d'un morceau
 function lancerEcoute(titre) {
     const lecteurAudio = document.getElementById('lecteurAudio');
     const boutonPlay = document.getElementById('boutonPlay');
@@ -161,10 +160,7 @@ function lancerEcoute(titre) {
     lecteurAudio.addEventListener('timeupdate', mettreAJourBarreDeTemps);
 
     // Événement lorsque la piste est terminée
-    lecteurAudio.addEventListener('ended', () => {
-        // Vous pouvez ajouter ici le code pour passer à la piste suivante
-        console.log('La piste est terminée');
-    });
+    lecteurAudio.addEventListener('ended', () => passerPisteSuivante());
 
     // Bouton Play/Pause
     boutonPlay.addEventListener('click', () => {
@@ -175,50 +171,29 @@ function lancerEcoute(titre) {
         }
     });
 
-    
     // Bouton Passer à la piste suivante
-    boutonPasser.addEventListener('click', () => {
-        passerPisteSuivante();
-    });
-    
+    boutonPasser.addEventListener('click', passerPisteSuivante);
+
     // Bouton Reculer à la piste précédente
-    boutonReculer.addEventListener('click', () => {
-        reculerPistePrecedente();
-    });
-    
-    
+    boutonReculer.addEventListener('click', reculerPistePrecedente);
+
     // Fonction pour passer à la piste suivante
     function passerPisteSuivante() {
-        indexPisteActuelle++;
-        if (indexPisteActuelle >= pistes.length) {
-            // Si on atteint la fin de la liste, revenir au début
-            indexPisteActuelle = 0;
-        }
+        indexPisteActuelle = (indexPisteActuelle + 1) % pistes.length;
         jouerPisteActuelle();
     }
-    
+
     // Fonction pour reculer à la piste précédente
     function reculerPistePrecedente() {
-        indexPisteActuelle--;
-        if (indexPisteActuelle < 0) {
-            // Si on est au début de la liste, passer à la fin
-            indexPisteActuelle = pistes.length - 1;
-        }
+        indexPisteActuelle = (indexPisteActuelle - 1 + pistes.length) % pistes.length;
         jouerPisteActuelle();
     }
-    
+
     // Fonction pour jouer la piste actuelle
     function jouerPisteActuelle() {
         const pisteActuelle = pistes[indexPisteActuelle];
         lancerEcoute(pisteActuelle);
     }
-    
-    
-    // Événement lorsque la piste est terminée
-    lecteurAudio.addEventListener('ended', () => {
-        passerPisteSuivante();
-    });
-
 
     // Barre de temps
     barreDeTemps.addEventListener('input', () => {
