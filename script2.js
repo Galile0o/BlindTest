@@ -133,10 +133,34 @@ function afficherPlaylist(playlist) {
 
 // Fonction pour lancer l'écoute d'un morceau
 function lancerEcoute(titre) {
-    // Vous pouvez ajouter ici le code pour lancer l'écoute du morceau,
-    // par exemple, en utilisant l'API Web Audio ou d'autres méthodes de lecture audio.
-    console.log(`Lancement du morceau : ${titre.titre} - ${titre.auteur}`);
-    // Ajoutez ici le code pour lancer la lecture audio
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const source = audioContext.createBufferSource();
+    const request = new XMLHttpRequest();
+
+    // Chemin vers le fichier audio
+    const cheminAudio = `Album/${titre.album}/musiques/${titre.titre}.mp3`;
+
+    request.open('GET', cheminAudio, true);
+    request.responseType = 'arraybuffer';
+
+    // Gestionnaire d'événement lorsque le fichier audio est chargé
+    request.onload = function() {
+        const audioData = request.response;
+
+        // Décodage du fichier audio
+        audioContext.decodeAudioData(audioData, function(buffer) {
+            source.buffer = buffer;
+
+            // Connecter le nœud source au contexte audio
+            source.connect(audioContext.destination);
+
+            // Lancer la lecture
+            source.start(0);
+        });
+    };
+
+    // Envoyer la requête pour charger le fichier audio
+    request.send();
 }
 
 document.addEventListener("DOMContentLoaded", function() {
