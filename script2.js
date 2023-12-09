@@ -109,6 +109,8 @@ function chargerPlaylist(nomAlbum) {
         .catch(error => console.error('Erreur lors du chargement du fichier JSON', error));
 }
 let pistes;
+// Définissez une variable globale pour suivre l'index de la piste actuelle
+let indexPisteActuelle = 0;
 
 function afficherPlaylist(playlist) {
     // Accédez aux données de la playlist (nomAlbum et pistes)
@@ -173,10 +175,6 @@ function lancerEcoute(titre) {
         }
     });
 
-    // Définissez une variable globale pour suivre l'index de la piste actuelle
-    let indexPisteActuelle = 0;
-    
-    // ...
     
     // Bouton Passer à la piste suivante
     boutonPasser.addEventListener('click', () => {
