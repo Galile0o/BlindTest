@@ -95,6 +95,7 @@ let nomAlbum;
 let pistes;
 // Définissez une variable globale pour suivre l'index de la piste actuelle
 let indexPisteActuelle = 0;
+let enCoursDePassage = false; // Nouvelle variable pour éviter les appels multiples
 
 function chargerPlaylist(nomAlbumtemp) {
     nomAlbum = nomAlbumtemp;
@@ -214,8 +215,6 @@ function reculerPistePrecedente() {
             lecteurAudio.pause();
         }
     }
-
-    let enCoursDePassage = false; // Nouvelle variable pour éviter les appels multiples
 
     // Retirer tous les écouteurs d'événements
     lecteurAudio.removeEventListener('loadedmetadata', mettreAJourBarreDeTemps);
