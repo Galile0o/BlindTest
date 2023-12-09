@@ -209,6 +209,7 @@ function reculerPistePrecedente() {
     }
 
     function toggleLecture() {
+        console.log("pause/play");
         if (lecteurAudio.paused) {
             lecteurAudio.play();
         } else {
