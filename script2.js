@@ -251,7 +251,11 @@ function reculerPistePrecedente() {
     boutonReculer.addEventListener('click', reculerPistePrecedente);
     barreDeTemps.addEventListener('input', ajusterTemps);
 
-    lecteurAudio.play();
+    try {
+        lecteurAudio.play();
+    } catch (error) {
+        console.error('Erreur lors de la lecture audio :', error);
+    }
 }
 
 
