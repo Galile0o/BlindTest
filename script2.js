@@ -108,11 +108,12 @@ function chargerPlaylist(nomAlbum) {
         .then(data => afficherPlaylist(data))
         .catch(error => console.error('Erreur lors du chargement du fichier JSON', error));
 }
+let pistes;
 
 function afficherPlaylist(playlist) {
     // Accédez aux données de la playlist (nomAlbum et pistes)
     const nomAlbum = playlist.nomAlbum;
-    const pistes = playlist.pistes;
+    pistes = playlist.pistes;
 
     // Obtenez le premier élément de la playlist
     const premierTitre = pistes[0];
@@ -172,17 +173,54 @@ function lancerEcoute(titre) {
         }
     });
 
+    // Définissez une variable globale pour suivre l'index de la piste actuelle
+    let indexPisteActuelle = 0;
+    
+    // ...
+    
     // Bouton Passer à la piste suivante
     boutonPasser.addEventListener('click', () => {
-        // Vous pouvez ajouter ici le code pour passer à la piste suivante
-        console.log('Passer à la piste suivante');
+        passerPisteSuivante();
     });
-
+    
     // Bouton Reculer à la piste précédente
     boutonReculer.addEventListener('click', () => {
-        // Vous pouvez ajouter ici le code pour reculer à la piste précédente
-        console.log('Reculer à la piste précédente');
+        reculerPistePrecedente();
     });
+    
+    
+    // Fonction pour passer à la piste suivante
+    function passerPisteSuivante() {
+        indexPisteActuelle++;
+        if (indexPisteActuelle >= pistes.length) {
+            // Si on atteint la fin de la liste, revenir au début
+            indexPisteActuelle = 0;
+        }
+        jouerPisteActuelle();
+    }
+    
+    // Fonction pour reculer à la piste précédente
+    function reculerPistePrecedente() {
+        indexPisteActuelle--;
+        if (indexPisteActuelle < 0) {
+            // Si on est au début de la liste, passer à la fin
+            indexPisteActuelle = pistes.length - 1;
+        }
+        jouerPisteActuelle();
+    }
+    
+    // Fonction pour jouer la piste actuelle
+    function jouerPisteActuelle() {
+        const pisteActuelle = pistes[indexPisteActuelle];
+        lancerEcoute(pisteActuelle);
+    }
+    
+    
+    // Événement lorsque la piste est terminée
+    lecteurAudio.addEventListener('ended', () => {
+        passerPisteSuivante();
+    });
+
 
     // Barre de temps
     barreDeTemps.addEventListener('input', () => {
