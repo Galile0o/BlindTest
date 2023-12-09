@@ -167,12 +167,12 @@ function lancerEcoute(titre) {
     }
 
     function passerPisteSuivante() {
-        indexPisteActuelle = indexPisteActuelle + 1;
+        indexPisteActuelle = (indexPisteActuelle + 1) % pistes.length;
         jouerPisteActuelle();
     }
 
     function reculerPistePrecedente() {
-        indexPisteActuelle = indexPisteActuelle - 1;
+        indexPisteActuelle = (indexPisteActuelle - 1 + pistes.length) % pistes.length;
         jouerPisteActuelle();
     }
 
@@ -193,7 +193,7 @@ function lancerEcoute(titre) {
         }
     }
 
-    // Supprimer les écouteurs d'événements existants
+    // Retirer tous les écouteurs d'événements
     lecteurAudio.removeEventListener('loadedmetadata', mettreAJourBarreDeTemps);
     lecteurAudio.removeEventListener('timeupdate', mettreAJourBarreDeTemps);
     lecteurAudio.removeEventListener('ended', passerPisteSuivante);
@@ -201,6 +201,9 @@ function lancerEcoute(titre) {
     boutonPasser.removeEventListener('click', passerPisteSuivante);
     boutonReculer.removeEventListener('click', reculerPistePrecedente);
     barreDeTemps.removeEventListener('input', ajusterTemps);
+
+    // Assurer que l'index reste dans les limites
+    indexPisteActuelle = Math.max(0, Math.min(indexPisteActuelle, pistes.length - 1));
 
     lecteurAudio.src = `Album/${titre.album}/${titre.titre}.mp3`;
 
@@ -218,6 +221,7 @@ function lancerEcoute(titre) {
 
     lecteurAudio.play();
 }
+
 
 
 document.addEventListener("DOMContentLoaded", function() {
