@@ -168,13 +168,13 @@ function lancerEcoute(titre) {
 
     function passerPisteSuivante() {
         indexPisteActuelle = (indexPisteActuelle + 1) % pistes.length;
-        console.log(indexPisteActuelle);
+        console.log("test : " + indexPisteActuelle);
         jouerPisteActuelle();
     }
 
     function reculerPistePrecedente() {
         indexPisteActuelle = (indexPisteActuelle - 1 + pistes.length) % pistes.length;
-        console.log(indexPisteActuelle);
+        console.log("test : " + indexPisteActuelle);
         jouerPisteActuelle();
     }
 
