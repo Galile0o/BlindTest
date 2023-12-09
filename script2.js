@@ -167,38 +167,44 @@ function lancerEcoute(titre) {
     }
 
     function passerPisteSuivante() {
-        // Vérifier si une opération de passage est déjà en cours
-        if (enCoursDePassage) {
-            return;
-        }
-
-        // Désactiver la possibilité de passer pendant cette opération
-        enCoursDePassage = true;
-
-        indexPisteActuelle = (indexPisteActuelle + 1) % pistes.length;
-        jouerPisteActuelle();
-
-        // Activer à nouveau la possibilité de passer après un court délai
-        setTimeout(() => {
-            enCoursDePassage = false;
-        }, 1000); // Ajoutez un délai d'1 seconde (ajustable si nécessaire)
+    // Vérifier si une opération de passage est déjà en cours
+    if (enCoursDePassage) {
+        return;
     }
 
-    function reculerPistePrecedente() {
-         if (enCoursDePassage) {
-            return;
-        }
+    // Désactiver la possibilité de passer pendant cette opération
+    enCoursDePassage = true;
+    document.getElementById('boutonPasser').disabled = true;
 
-        // Désactiver la possibilité de passer pendant cette opération
-        enCoursDePassage = true;
-        
-        indexPisteActuelle = (indexPisteActuelle - 1 + pistes.length) % pistes.length;
-        jouerPisteActuelle();
-        
-        setTimeout(() => {
-            enCoursDePassage = false;
-        }, 1000); // Ajoutez un délai d'1 seconde (ajustable si nécessaire)
+    indexPisteActuelle = (indexPisteActuelle + 1) % pistes.length;
+    jouerPisteActuelle();
+
+    // Activer à nouveau la possibilité de passer après un court délai
+    setTimeout(() => {
+        enCoursDePassage = false;
+        document.getElementById('boutonPasser').disabled = false;
+    }, 1000); // Ajoutez un délai d'1 seconde (ajustable si nécessaire)
+}
+
+function reculerPistePrecedente() {
+    if (enCoursDePassage) {
+        return;
     }
+
+    // Désactiver la possibilité de passer pendant cette opération
+    enCoursDePassage = true;
+    document.getElementById('boutonReculer').disabled = true;
+
+    indexPisteActuelle = (indexPisteActuelle - 1 + pistes.length) % pistes.length;
+    jouerPisteActuelle();
+
+    // Activer à nouveau la possibilité de passer après un court délai
+    setTimeout(() => {
+        enCoursDePassage = false;
+        document.getElementById('boutonReculer').disabled = false;
+    }, 1000); // Ajoutez un délai d'1 seconde (ajustable si nécessaire)
+}
+
 
     function jouerPisteActuelle() {
         afficherPlaylist(indexPisteActuelle);
