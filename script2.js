@@ -133,35 +133,67 @@ function afficherPlaylist(playlist) {
 
 // Fonction pour lancer l'écoute d'un morceau
 function lancerEcoute(titre) {
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    const source = audioContext.createBufferSource();
-    const request = new XMLHttpRequest();
+    const lecteurAudio = document.getElementById('lecteurAudio');
+    const boutonPlay = document.getElementById('boutonPlay');
+    const boutonPasser = document.getElementById('boutonPasser');
+    const boutonReculer = document.getElementById('boutonReculer');
+    const barreDeTemps = document.getElementById('barreDeTemps');
 
-    // Chemin vers le fichier audio
-    const cheminAudio = `Album/${titre.album}/${titre.titre}.mp3`;
+    // Assurez-vous que le lecteur audio est prêt
+    lecteurAudio.src = `chemin/vers/votre/musique/${titre.titre}.mp3`;
 
-    request.open('GET', cheminAudio, true);
-    request.responseType = 'arraybuffer';
+    // Fonction pour mettre à jour la barre de temps
+    function mettreAJourBarreDeTemps() {
+        const pourcentage = (lecteurAudio.currentTime / lecteurAudio.duration) * 100;
+        barreDeTemps.value = pourcentage;
+    }
 
-    // Gestionnaire d'événement lorsque le fichier audio est chargé
-    request.onload = function() {
-        const audioData = request.response;
+    // Événement lorsqu'une nouvelle piste est chargée
+    lecteurAudio.addEventListener('loadedmetadata', () => {
+        barreDeTemps.max = lecteurAudio.duration;
+        mettreAJourBarreDeTemps();
+    });
 
-        // Décodage du fichier audio
-        audioContext.decodeAudioData(audioData, function(buffer) {
-            source.buffer = buffer;
+    // Événement pendant la lecture de la piste
+    lecteurAudio.addEventListener('timeupdate', mettreAJourBarreDeTemps);
 
-            // Connecter le nœud source au contexte audio
-            source.connect(audioContext.destination);
+    // Événement lorsque la piste est terminée
+    lecteurAudio.addEventListener('ended', () => {
+        // Vous pouvez ajouter ici le code pour passer à la piste suivante
+        console.log('La piste est terminée');
+    });
 
-            // Lancer la lecture
-            source.start(0);
-        });
-    };
+    // Bouton Play/Pause
+    boutonPlay.addEventListener('click', () => {
+        if (lecteurAudio.paused) {
+            lecteurAudio.play();
+        } else {
+            lecteurAudio.pause();
+        }
+    });
 
-    // Envoyer la requête pour charger le fichier audio
-    request.send();
+    // Bouton Passer à la piste suivante
+    boutonPasser.addEventListener('click', () => {
+        // Vous pouvez ajouter ici le code pour passer à la piste suivante
+        console.log('Passer à la piste suivante');
+    });
+
+    // Bouton Reculer à la piste précédente
+    boutonReculer.addEventListener('click', () => {
+        // Vous pouvez ajouter ici le code pour reculer à la piste précédente
+        console.log('Reculer à la piste précédente');
+    });
+
+    // Barre de temps
+    barreDeTemps.addEventListener('input', () => {
+        const pourcentage = barreDeTemps.value / 100;
+        lecteurAudio.currentTime = pourcentage * lecteurAudio.duration;
+    });
+
+    // Démarrez la lecture
+    lecteurAudio.play();
 }
+
 
 document.addEventListener("DOMContentLoaded", function() {
     const nomsEquipes = recupererNomsEquipes();
