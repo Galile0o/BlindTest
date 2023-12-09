@@ -209,12 +209,16 @@ function reculerPistePrecedente() {
     }
 
     function toggleLecture() {
+        document.getElementById('boutonPlay').disabled = true;
         console.log("pause/play");
         if (lecteurAudio.paused) {
             lecteurAudio.play();
         } else {
             lecteurAudio.pause();
         }
+        setTimeout(() => {
+            document.getElementById('boutonPlay').disabled = false;
+        }, 1000); // Ajoutez un délai d'1 seconde (ajustable si nécessaire)
     }
 
     // Retirer tous les écouteurs d'événements
