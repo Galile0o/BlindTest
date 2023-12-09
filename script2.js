@@ -101,8 +101,12 @@ function chargerAlbums() {
 }
 let nomAlbum;
 let pistes;
+// Définissez une variable globale pour suivre l'index de la piste actuelle
+let indexPisteActuelle = 0;
+
 function chargerPlaylist(nomAlbumtemp) {
     nomAlbum = nomAlbumtemp;
+    indexPisteActuelle = 0;
     const cheminListe = `Album/${nomAlbum}/list.json`;
     // Utilisez fetch pour récupérer le fichier JSON
     fetch(cheminListe)
@@ -114,8 +118,7 @@ function chargerPlaylist(nomAlbumtemp) {
         .catch(error => console.error('Erreur lors du chargement du fichier JSON', error));
 }
 
-// Définissez une variable globale pour suivre l'index de la piste actuelle
-let indexPisteActuelle = 0;
+
 function afficherPlaylist(index) {
     // Assurez-vous que l'index est dans les limites de la liste des pistes
     if (index >= 0 && index < pistes.length) {
