@@ -96,6 +96,7 @@ let pistes;
 // Définissez une variable globale pour suivre l'index de la piste actuelle
 let indexPisteActuelle = 0;
 let enCoursDePassage = false; // Nouvelle variable pour éviter les appels multiples
+let enCoursDeLecturePause = false;
 
 function chargerPlaylist(nomAlbumtemp) {
     nomAlbum = nomAlbumtemp;
@@ -209,14 +210,19 @@ function reculerPistePrecedente() {
     }
 
     function toggleLecture() {
+        if (enCoursDeLecturePause) {
+            return;
+        }
+        enCoursDeLecturePause = true;
         document.getElementById('boutonPlay').disabled = true;
-        console.log("pause/playtest");
+        console.log("pause/playtest2");
         if (lecteurAudio.paused) {
             lecteurAudio.play();
         } else {
             lecteurAudio.pause();
         }
         setTimeout(() => {
+            enCoursDeLecturePause = false;
             document.getElementById('boutonPlay').disabled = false;
         }, 1000); // Ajoutez un délai d'1 seconde (ajustable si nécessaire)
     }
