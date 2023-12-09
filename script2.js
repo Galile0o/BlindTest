@@ -121,8 +121,13 @@ function chargerPlaylist(nomAlbumtemp) {
 
 function afficherPlaylist(index) {
     console.log(index);
+
     // Assurez-vous que l'index est dans les limites de la liste des pistes
     if (index >= 0 && index < pistes.length) {
+        // Désactivez le bouton pendant le traitement
+        document.getElementById('boutonPasser').disabled = true;
+        document.getElementById('boutonReculer').disabled = true;
+
         // Obtenez l'élément de la playlist avec l'index donné
         const premierTitre = pistes[index];
 
@@ -138,10 +143,15 @@ function afficherPlaylist(index) {
 
         // Lancez l'écoute du premier morceau
         lancerEcoute(premierTitre);
+
+        // Réactivez le bouton après le traitement
+        document.getElementById('boutonPasser').disabled = false;
+        document.getElementById('boutonReculer').disabled = false;
     } else {
         console.error('L\'index est en dehors des limites de la liste des pistes.');
     }
 }
+
 
 
 function lancerEcoute(titre) {
