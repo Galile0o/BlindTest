@@ -262,7 +262,6 @@ function reculerPistePrecedente() {
         mettreAJourBarreDeTemps();
     });
 
-    lecteurAudio.addEventListener('loadedmetadata', mettreAJourBarreDeTemps);
     lecteurAudio.addEventListener('ended', passerPisteSuivante);
     boutonPlay.addEventListener('click', toggleLecture);
     boutonPasser.addEventListener('click', passerPisteSuivante);
