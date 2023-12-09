@@ -262,16 +262,7 @@ function reculerPistePrecedente() {
         mettreAJourBarreDeTemps();
     });
 
-    lecteurAudio.addEventListener('loadedmetadata', () => {
-        // Mettez à jour la valeur maximale de la barre de temps pour correspondre à la durée totale
-        barreDeTemps.max = lecteurAudio.duration;
-
-        // Mettez à jour le texte du temps total
-        document.getElementById('tempsTotal').textContent = formatTemps(lecteurAudio.duration);
-
-        // Appelez la fonction pour mettre à jour la barre de temps
-        mettreAJourBarreDeTemps();
-    });
+    lecteurAudio.addEventListener('loadedmetadata', mettreAJourBarreDeTemps);
     lecteurAudio.addEventListener('ended', passerPisteSuivante);
     boutonPlay.addEventListener('click', toggleLecture);
     boutonPasser.addEventListener('click', passerPisteSuivante);
