@@ -140,7 +140,7 @@ function lancerEcoute(titre) {
     const barreDeTemps = document.getElementById('barreDeTemps');
 
     // Assurez-vous que le lecteur audio est prêt
-    lecteurAudio.src = `chemin/vers/votre/musique/${titre.titre}.mp3`;
+    lecteurAudio.src = `Album/${titre.album}/${titre.titre}.mp3`;
 
     // Fonction pour mettre à jour la barre de temps
     function mettreAJourBarreDeTemps() {
