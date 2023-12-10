@@ -355,7 +355,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const gageChoisi = recupererGageAleatoire(categorieChoisie);
     
             // Afficher le gage (vous pouvez adapter cela selon vos besoins)
-            alert(`Gage attribué : ${gageChoisi}`);
+            alert(`Gage attribué ${categorieChoisie} : ${gageChoisi}`);
         }
     
     async function recupererGageAleatoire(categorie) {
