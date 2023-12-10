@@ -352,24 +352,26 @@ document.addEventListener("DOMContentLoaded", function() {
             const categorieChoisie = gageCategories[Math.floor(Math.random() * gageCategories.length)];
     
             // Récupérer un gage aléatoire de la catégorie choisie
-            const gageChoisi = recupererGageAleatoire(categorieChoisie);
+            const gageChoisi = await recupererGageAleatoire(categorieChoisie);
     
             // Afficher le gage (vous pouvez adapter cela selon vos besoins)
             alert(`Gage attribué ${categorieChoisie} : ${gageChoisi}`);
         }
     
     async function recupererGageAleatoire(categorie) {
+        const url = 'listgages.json';
+    
         try {
-            const url = 'listgages.json';
             const response = await fetch(url);
-            const gagesJSON = await response.json();
-            console.log(gagesJSON);
-            const gagesCategorie = gagesJSON.gages[categorie];
+            const data = await response.json();
+    
+            const gagesCategorie = data.gages[categorie];
             return gagesCategorie[Math.floor(Math.random() * gagesCategorie.length)];
         } catch (error) {
-            console.error('Erreur lors de la récupération du fichier JSON des gages :', error);
-            throw error; // Propagez l'erreur pour qu'elle puisse être gérée ailleurs si nécessaire
+            console.error('Erreur lors du chargement du fichier JSON', error);
+            throw error;
         }
     }
+
 
 });
