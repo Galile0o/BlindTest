@@ -363,7 +363,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const url = 'listgages.json';
             const response = await fetch(url);
             const gagesJSON = await response.json();
-            
+            console.log(gagesJSON);
             const gagesCategorie = gagesJSON.gages[categorie];
             return gagesCategorie[Math.floor(Math.random() * gagesCategorie.length)];
         } catch (error) {
