@@ -340,13 +340,13 @@ document.addEventListener("DOMContentLoaded", function() {
     
             // Condition pour attribuer un gage
             if (Math.abs(increment) > 0 && Math.random() < 0.2) { // 20% de chance d'attribuer un gage (ajustez selon vos préférences)
-                attribuerGage(equipe, increment);
+                attribuerGage(increment);
             }
     
             afficherEquipes();
         }
     
-        function attribuerGage(equipe, increment) {
+        function attribuerGage(increment) {
             const gageCategories = ['bonus', 'malus', 'temps'];
             const categorieChoisie = gageCategories[Math.floor(Math.random() * gageCategories.length)];
     
@@ -354,7 +354,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const gageChoisi = recupererGageAleatoire(categorieChoisie);
     
             // Afficher le gage (vous pouvez adapter cela selon vos besoins)
-            alert(`Gage attribué à l'équipe ${equipe.nom} : ${gageChoisi}`);
+            alert(`Gage attribué : ${gageChoisi}`);
         }
     
         function recupererGageAleatoire(categorie) {
