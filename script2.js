@@ -339,14 +339,15 @@ document.addEventListener("DOMContentLoaded", function() {
             equipe.points += increment;
     
             // Condition pour attribuer un gage
-            if (Math.abs(increment) > 0 && Math.random() < 0.2) { // 20% de chance d'attribuer un gage (ajustez selon vos préférences)
-                attribuerGage(increment);
+            if (Math.random() < 0.2) { // 20% de chance d'attribuer un gage (ajustez selon vos préférences)
+                console.log("testgage");
+                attribuerGage();
             }
     
             afficherEquipes();
         }
     
-        function attribuerGage(increment) {
+        function attribuerGage() {
             const gageCategories = ['bonus', 'malus', 'temps'];
             const categorieChoisie = gageCategories[Math.floor(Math.random() * gageCategories.length)];
     
