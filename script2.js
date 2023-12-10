@@ -358,9 +358,18 @@ document.addEventListener("DOMContentLoaded", function() {
             alert(`Gage attribué : ${gageChoisi}`);
         }
     
-        function recupererGageAleatoire(categorie) {
-            const gagesJSON = require('listgages.json');
+    async function recupererGageAleatoire(categorie) {
+        try {
+            const url = 'listgages.json';
+            const response = await fetch(url);
+            const gagesJSON = await response.json();
+            
             const gagesCategorie = gagesJSON.gages[categorie];
             return gagesCategorie[Math.floor(Math.random() * gagesCategorie.length)];
+        } catch (error) {
+            console.error('Erreur lors de la récupération du fichier JSON des gages :', error);
+            throw error; // Propagez l'erreur pour qu'elle puisse être gérée ailleurs si nécessaire
+        }
     }
+
 });
