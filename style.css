@@ -106,6 +106,7 @@ button {
     border-radius: 50%; /* Rend la boule pour avancer la barre circulaire */
     cursor: pointer;
     margin-top: -8px; /* Ajuste la position verticale de la boule */
+    background: transparent; /* Supprime le fond blanc */
 }
 
 #barreDeTemps::-webkit-slider-runnable-track {
@@ -123,6 +124,7 @@ button {
     border: none;
     border-radius: 50%; /* Rend la boule pour avancer la barre circulaire */
     cursor: pointer;
+    background: transparent; /* Supprime le fond blanc */
 }
 
 #barreDeTemps::-moz-range-track {
