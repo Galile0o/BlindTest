@@ -81,6 +81,7 @@ button {
     display: flex;
     justify-content: space-around;  /* ou d'autres valeurs comme space-between selon vos préférences */
     align-items: center;  /* alignez les éléments au centre verticalement si nécessaire */
+    flex-wrap: wrap;
 }
 #tempsActuel,
 #tempsTotal {
