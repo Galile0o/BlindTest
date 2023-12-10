@@ -93,10 +93,63 @@ button {
     justify-content: space-between;
 }
 #barreDeTemps {
-    width: 80%;
-    margin: 0 auto;
-    display: block;
+    width: 100%;
+    margin-top: 10px;
+    appearance: none; /* Supprime le style par défaut du navigateur */
 }
+
+#barreDeTemps::-webkit-slider-thumb {
+    width: 10px; /* Largeur de la boule pour avancer la barre */
+    height: 20px; /* Hauteur de la boule pour avancer la barre */
+    background-color: #84A98D; /* Couleur de la boule pour avancer la barre */
+    border: none;
+    border-radius: 50%; /* Rend la boule pour avancer la barre circulaire */
+    cursor: pointer;
+    margin-top: -8px; /* Ajuste la position verticale de la boule */
+}
+
+#barreDeTemps::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8px; /* Hauteur de la barre de temps */
+    background-color: #527970; /* Couleur de la barre de temps */
+    border-radius: 5px; /* Coins arrondis de la barre de temps */
+    cursor: pointer;
+}
+
+#barreDeTemps::-moz-range-thumb {
+    width: 10px; /* Largeur de la boule pour avancer la barre pour Firefox */
+    height: 20px; /* Hauteur de la boule pour avancer la barre pour Firefox */
+    background-color: #84A98D; /* Couleur de la boule pour avancer la barre pour Firefox */
+    border: none;
+    border-radius: 50%; /* Rend la boule pour avancer la barre circulaire */
+    cursor: pointer;
+}
+
+#barreDeTemps::-moz-range-track {
+    width: 100%;
+    height: 8px; /* Hauteur de la barre de temps pour Firefox */
+    background-color: #527970; /* Couleur de la barre de temps pour Firefox */
+    border-radius: 5px; /* Coins arrondis de la barre de temps pour Firefox */
+    cursor: pointer;
+}
+
+#barreDeTemps::-ms-thumb {
+    width: 10px; /* Largeur de la boule pour avancer la barre pour IE/Edge */
+    height: 20px; /* Hauteur de la boule pour avancer la barre pour IE/Edge */
+    background-color: #84A98D; /* Couleur de la boule pour avancer la barre pour IE/Edge */
+    border: none;
+    border-radius: 50%; /* Rend la boule pour avancer la barre circulaire */
+    cursor: pointer;
+}
+
+#barreDeTemps::-ms-track {
+    width: 100%;
+    height: 8px; /* Hauteur de la barre de temps pour IE/Edge */
+    background-color: #527970; /* Couleur de la barre de temps pour IE/Edge */
+    border-radius: 5px; /* Coins arrondis de la barre de temps pour IE/Edge */
+    cursor: pointer;
+}
+
 
 /* Ajoutez ces styles aux boutons existants */
 button {
