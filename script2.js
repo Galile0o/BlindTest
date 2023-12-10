@@ -334,8 +334,32 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
 
-    function changerPoints(index, increment) {
-        equipes[index].points += increment;
-        afficherEquipes();
+        function changerPoints(index, increment) {
+            const equipe = equipes[index];
+            equipe.points += increment;
+    
+            // Condition pour attribuer un gage
+            if (Math.abs(increment) > 0 && Math.random() < 0.2) { // 20% de chance d'attribuer un gage (ajustez selon vos préférences)
+                attribuerGage(equipe, increment);
+            }
+    
+            afficherEquipes();
+        }
+    
+        function attribuerGage(equipe, increment) {
+            const gageCategories = ['bonus', 'malus', 'temps'];
+            const categorieChoisie = gageCategories[Math.floor(Math.random() * gageCategories.length)];
+    
+            // Récupérer un gage aléatoire de la catégorie choisie
+            const gageChoisi = recupererGageAleatoire(categorieChoisie);
+    
+            // Afficher le gage (vous pouvez adapter cela selon vos besoins)
+            alert(`Gage attribué à l'équipe ${equipe.nom} : ${gageChoisi}`);
+        }
+    
+        function recupererGageAleatoire(categorie) {
+            const gagesJSON = require('listgages.json');
+            const gagesCategorie = gagesJSON.gages[categorie];
+            return gagesCategorie[Math.floor(Math.random() * gagesCategorie.length)];
     }
 });
