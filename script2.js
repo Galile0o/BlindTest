@@ -347,28 +347,34 @@ document.addEventListener("DOMContentLoaded", function() {
             afficherEquipes();
         }
     
+        function recupererGageAleatoire(categorie) {
+            const url = 'listgages.json';
+            return fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const gagesCategorie = data.gages[categorie];
+                    return gagesCategorie[Math.floor(Math.random() * gagesCategorie.length)];
+                })
+                .catch(error => {
+                    console.error('Erreur lors du chargement du fichier JSON', error);
+                    throw error;
+                });
+        }
+        
         function attribuerGage() {
             const gageCategories = ['bonus', 'malus', 'temps'];
             const categorieChoisie = gageCategories[Math.floor(Math.random() * gageCategories.length)];
-    
-            // Récupérer un gage aléatoire de la catégorie choisie
-            const gageChoisi = recupererGageAleatoire(categorieChoisie);
-    
-            // Afficher le gage (vous pouvez adapter cela selon vos besoins)
-            alert(`Gage attribué ${categorieChoisie} : ${gageChoisi}`);
+        
+            recupererGageAleatoire(categorieChoisie)
+                .then(gageChoisi => {
+                    // Afficher le gage (vous pouvez adapter cela selon vos besoins)
+                    alert(`Gage attribué ${categorieChoisie} : ${gageChoisi}`);
+                })
+                .catch(error => {
+                    // Gérer l'erreur ici
+                    console.error('Erreur lors de l\'attribution du gage', error);
+                });
         }
-    
-    function recupererGageAleatoire(categorie) {
-        const url = 'listgages.json';
-        let gagesCategorie;
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-            gagesCategorie = data.gages[categorie];
-            return gagesCategorie[Math.floor(Math.random() * gagesCategorie.length)];
-        })
-        .catch(error => console.error('Erreur lors du chargement du fichier JSON', error));
-    }
 
 
 });
