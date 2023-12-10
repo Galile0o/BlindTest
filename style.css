@@ -99,7 +99,7 @@ button {
 }
 
 #barreDeTemps::-webkit-slider-thumb {
-    width: 10px; /* Largeur de la boule pour avancer la barre */
+    width: 20px; /* Largeur de la boule pour avancer la barre */
     height: 20px; /* Hauteur de la boule pour avancer la barre */
     background-color: #84A98D; /* Couleur de la boule pour avancer la barre */
     border: none;
@@ -117,7 +117,7 @@ button {
 }
 
 #barreDeTemps::-moz-range-thumb {
-    width: 10px; /* Largeur de la boule pour avancer la barre pour Firefox */
+    width: 20px; /* Largeur de la boule pour avancer la barre pour Firefox */
     height: 20px; /* Hauteur de la boule pour avancer la barre pour Firefox */
     background-color: #84A98D; /* Couleur de la boule pour avancer la barre pour Firefox */
     border: none;
@@ -130,23 +130,6 @@ button {
     height: 8px; /* Hauteur de la barre de temps pour Firefox */
     background-color: #527970; /* Couleur de la barre de temps pour Firefox */
     border-radius: 5px; /* Coins arrondis de la barre de temps pour Firefox */
-    cursor: pointer;
-}
-
-#barreDeTemps::-ms-thumb {
-    width: 10px; /* Largeur de la boule pour avancer la barre pour IE/Edge */
-    height: 20px; /* Hauteur de la boule pour avancer la barre pour IE/Edge */
-    background-color: #84A98D; /* Couleur de la boule pour avancer la barre pour IE/Edge */
-    border: none;
-    border-radius: 50%; /* Rend la boule pour avancer la barre circulaire */
-    cursor: pointer;
-}
-
-#barreDeTemps::-ms-track {
-    width: 100%;
-    height: 8px; /* Hauteur de la barre de temps pour IE/Edge */
-    background-color: #527970; /* Couleur de la barre de temps pour IE/Edge */
-    border-radius: 5px; /* Coins arrondis de la barre de temps pour IE/Edge */
     cursor: pointer;
 }
 
