@@ -200,13 +200,12 @@ button {
 }
 #listeTitres table {
     width: 100%;
-    border-collapse: collapse;
     margin-top: 20px;
+    border-spacing: 0; /* Écart entre les cellules */
 }
 
 #listeTitres th, #listeTitres td {
-    border: 1px solid #CAD2C5;
-    padding: 10px;
+    padding: 15px;
     text-align: left;
 }
 
@@ -214,3 +213,23 @@ button {
     background-color: #527970;
     color: #CAD2C5;
 }
+
+#listeTitres td {
+    background-color: #354E52;
+    color: #CAD2C5;
+}
+
+#listeTitres tr:nth-child(even) {
+    background-color: #2F3D46; /* Couleur de fond pour les lignes paires */
+}
+
+#listeTitres td:first-child {
+    border-top-left-radius: 5px; /* Coins arrondis pour la première colonne */
+    border-bottom-left-radius: 5px;
+}
+
+#listeTitres td:last-child {
+    border-top-right-radius: 5px; /* Coins arrondis pour la dernière colonne */
+    border-bottom-right-radius: 5px;
+}
+
