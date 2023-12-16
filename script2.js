@@ -115,13 +115,22 @@ function chargerPlaylist(nomAlbumtemp) {
 
 // Nouvelle fonction pour afficher la liste des titres
 function afficherListeTitres() {
+    const tableauCorps = document.getElementById('tableauCorps');
     const listeTitresDiv = document.getElementById('listeTitres');
     listeTitresDiv.innerHTML = '<h3>Liste des Titres :</h3>';
 
     for (let i = 0; i < pistes.length; i++) {
+        const ligne = document.createElement('tr');
+        const colonneTitre = document.createElement('td');
+        const colonneAuteur = document.createElement('td');
         const titre = pistes[i].titre;
         const auteur = pistes[i].auteur;
-        listeTitresDiv.innerHTML += `<p>${titre} - ${auteur}</p>`;
+        colonneTitre.textContent = titre;
+        colonneAuteur.textContent = auteur;
+        ligne.appendChild(colonneTitre);
+        ligne.appendChild(colonneAuteur);
+
+        tableauCorps.appendChild(ligne);
     }
 }
 
