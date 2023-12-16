@@ -107,11 +107,23 @@ function chargerPlaylist(nomAlbumtemp) {
         .then(response => response.json())
         .then(data => {
         pistes = data.pistes;
+        afficherListeTitres();
         afficherPlaylist(0);
     })
         .catch(error => console.error('Erreur lors du chargement du fichier JSON', error));
 }
 
+// Nouvelle fonction pour afficher la liste des titres
+function afficherListeTitres() {
+    const listeTitresDiv = document.getElementById('listeTitres');
+    listeTitresDiv.innerHTML = '<h3>Liste des Titres :</h3>';
+
+    for (let i = 0; i < pistes.length; i++) {
+        const titre = pistes[i].titre;
+        const auteur = pistes[i].auteur;
+        listeTitresDiv.innerHTML += `<p>${titre} - ${auteur}</p>`;
+    }
+}
 
 function afficherPlaylist(index) {
     console.log(index);
