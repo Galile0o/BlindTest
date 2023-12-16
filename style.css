@@ -198,3 +198,19 @@ button {
     font-size: 1.2em;
     margin: 5px 0;
 }
+#listeTitres table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#listeTitres th, #listeTitres td {
+    border: 1px solid #CAD2C5;
+    padding: 10px;
+    text-align: left;
+}
+
+#listeTitres th {
+    background-color: #527970;
+    color: #CAD2C5;
+}
