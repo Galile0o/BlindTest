@@ -78,3 +78,21 @@ function recupererNomsEquipes() {
     return [];
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+    const joueurs = ["Joueur 1", "Joueur 2", "Joueur 3", "Joueur 4", "Joueur 5"];
+
+    const choisirVictimeButton = document.getElementById("choisirVictime");
+    const victimeSelectionneeElement = document.getElementById("victimeSelectionnee");
+
+    choisirVictimeButton.addEventListener("click", function() {
+        const victime = choisirVictimeAleatoire(joueurs);
+        victimeSelectionneeElement.textContent = `Victime choisie : ${victime}`;
+    });
+
+    function choisirVictimeAleatoire(joueurs) {
+        // TODO: Implémentez votre logique de choix ici
+        // Pour l'instant, c'est simplement un choix aléatoire
+        return joueurs[Math.floor(Math.random() * joueurs.length)];
+    }
+});
+
