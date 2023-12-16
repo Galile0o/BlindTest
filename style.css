@@ -182,3 +182,19 @@ button {
     background-color: #527970; /* Nouvelle couleur de fond */
     color: #CAD2C5; /* Nouvelle couleur du texte */
 }
+#listeTitres {
+    background-color: #354E52;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+#listeTitres h3 {
+    color: #CAD2C5;
+}
+
+#listeTitres p {
+    color: #CAD2C5;
+    font-size: 1.2em;
+    margin: 5px 0;
+}
