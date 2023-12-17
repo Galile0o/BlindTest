@@ -50,7 +50,7 @@ function envoyerVersPrincipal() {
     const victimeChoisie = document.getElementById("victimeSelectionnee");
     console.log("Valeur actuelle de victimeChoisie.value :", victimeChoisie.value);
      if (!victimeChoisie.value) {
-        victimeChoisie.textContent = `Victime choisie : Maxime`;
+        victimeChoisie.value = `Victime choisie : Maxime`;
         return
     }
     
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     choisirVictimeButton.addEventListener("click", function() {
         const victime = choisirVictimeAleatoire(joueurs);
-        victimeSelectionneeElement.textContent = `Victime choisie : ${victime}`;
+        victimeSelectionneeElement.value = `Victime choisie : ${victime}`;
     });
 
     function choisirVictimeAleatoire(joueurs) {
