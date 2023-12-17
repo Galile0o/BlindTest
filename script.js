@@ -48,6 +48,7 @@ function envoyerVersPrincipal() {
         return;
     }
     const victimeChoisie = document.getElementById("victimeSelectionnee");
+    console.log("Valeur actuelle de victimeChoisie.value :", victimeChoisie.value);
      if (!victimeChoisie.value) {
         victimeChoisie.textContent = `Victime choisie : Maxime`;
         return
