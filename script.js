@@ -42,7 +42,17 @@ function creerEquipes() {
 
 function envoyerVersPrincipal() {
     let nomsEquipes = [];
-
+    
+    if (nbEquipes < 2) {
+        alert("Veuillez entrer au moins deux équipes.");
+        return;
+    }
+    const victimeChoisie = document.getElementById("victimeSelectionnee");
+     if (!victimeChoisie.value) {
+        victimeChoisie.textContent = `Victime choisie : Maxime`;
+        return
+    }
+    
     for (let i = 1; i <= nbEquipes; i++) {
         const champEquipe = document.getElementById(`equipe${i}`);
         nomsEquipes.push(champEquipe.value || `Équipe ${i}`);
