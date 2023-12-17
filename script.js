@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function() {
     choisirVictimeButton.addEventListener("click", function() {
         const victime = choisirVictimeAleatoire(joueurs);
         victimeSelectionneeElement.value = `Victime choisie : ${victime}`;
-        victimeSelectionneeElement.textcontent = `Victime choisie : ${victime}`;
+        victimeSelectionneeElement.textContent = `Victime choisie : ${victime}`;
         
     });
 
