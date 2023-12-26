@@ -206,10 +206,15 @@ button {
     margin: 5px 0;
 }
 
-.musique-jouee {
+.musique-jouee td {
     background-color: #527970 !important; /* Couleur de fond pour la musique actuellement jouée */
     color: #CAD2C5 !important; /* Couleur du texte pour la musique actuellement jouée */
 }
+
+.musique-jouee:hover {
+    background-color: #527970 !important; /* Couleur de fond pour la musique actuellement jouée lors du survol */
+}
+
 
 #listeTitres table {
     width: 100%;
@@ -223,7 +228,6 @@ button {
 }
 
 #listeTitres th {
-    background-color: #527970;
     color: #CAD2C5;
 }
 
