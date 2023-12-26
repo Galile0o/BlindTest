@@ -97,10 +97,12 @@ let pistes;
 let indexPisteActuelle = 0;
 let enCoursDePassage = false; // Nouvelle variable pour éviter les appels multiples
 let enCoursDeLecturePause = false;
+let defilage = 0
 
 function chargerPlaylist(nomAlbumtemp) {
     nomAlbum = nomAlbumtemp;
     indexPisteActuelle = 0;
+    defilage = 0;
     const cheminListe = `Album/${nomAlbum}/list.json`;
     // Utilisez fetch pour récupérer le fichier JSON
     fetch(cheminListe)
@@ -171,7 +173,8 @@ function afficherPlaylist(index) {
 
 function faireDefilerTableau() {
     const tableauContainer = document.getElementById('listeTitres');
-    tableauContainer.scrollTop = 500;
+    defilage += 500;
+    tableauContainer.scrollTop = defilage;
 }
 
 function lancerEcoute(titre) {
