@@ -173,8 +173,16 @@ function afficherPlaylist(index) {
 
 function faireDefilerTableau() {
     const tableauContainer = document.getElementById('listeTitres');
-    defilage += 50;
-    tableauContainer.scrollTop = defilage;
+    const musiqueJouee = document.querySelector('.musique-jouee');
+
+    // Si la musique jouée est trouvée, ajustez le défilement en fonction de sa position
+    if (musiqueJouee) {
+        const positionMusiqueJouee = musiqueJouee.offsetTop;
+        tableauContainer.scrollTop = positionMusiqueJouee;
+    } else {
+        // Si la musique jouée n'est pas trouvée, remontez le tableau au sommet
+        tableauContainer.scrollTop = 0;
+    }
 }
 
 function lancerEcoute(titre) {
