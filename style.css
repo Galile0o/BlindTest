@@ -192,7 +192,7 @@ button {
     padding: 20px;
     margin-top: 20px;
     overflow: hidden; /* Ajout de cette ligne pour cacher le débordement du tableau */
-    max-height: 200px; /* Réglez la hauteur maximale selon vos préférences */
+    max-height: 300px; /* Réglez la hauteur maximale selon vos préférences */
     overflow-y: auto; /* Ajoutez une barre de défilement si nécessaire */
 }
 
@@ -204,11 +204,6 @@ button {
     color: #CAD2C5;
     font-size: 1.2em;
     margin: 5px 0;
-}
-
-#listeTitres tr:hover {
-    background-color: #84A98D; /* Couleur de fond lorsqu'une ligne est survolée */
-    cursor: pointer;
 }
 
 .musique-jouee {

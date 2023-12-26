@@ -107,7 +107,6 @@ function chargerPlaylist(nomAlbumtemp) {
         .then(response => response.json())
         .then(data => {
         pistes = data.pistes;
-        afficherListeTitres();
         afficherPlaylist(0);
     })
         .catch(error => console.error('Erreur lors du chargement du fichier JSON', error));
@@ -117,7 +116,9 @@ function chargerPlaylist(nomAlbumtemp) {
 function afficherListeTitres() {
     const tableauCorps = document.getElementById('tableauCorps');
     tableauCorps.innerHTML = '';
-    
+
+    const musiqueActuelle =  pistes[indexPisteActuelle];
+
     for (let i = 0; i < pistes.length; i++) {
         const ligne = document.createElement('tr');
         const colonneTitre = document.createElement('td');
@@ -128,13 +129,15 @@ function afficherListeTitres() {
         colonneAuteur.textContent = auteur;
         ligne.appendChild(colonneTitre);
         ligne.appendChild(colonneAuteur);
-
+        if (musiqueActuelle && musiqueActuelle.titre === titre) {
+            ligne.classList.add('musique-jouee');
+        }
         tableauCorps.appendChild(ligne);
     }
 }
 
 function afficherPlaylist(index) {
-    console.log(index);
+    afficherListeTitres();
 
     // Assurez-vous que l'index est dans les limites de la liste des pistes
     if (index >= 0 && index < pistes.length) {
