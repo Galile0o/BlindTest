@@ -83,6 +83,10 @@ button {
     align-items: center;  /* alignez les éléments au centre verticalement si nécessaire */
     flex-wrap: wrap;
 }
+#listeAlbums img {
+    max-width: 150px; /* Ajustez la valeur selon vos préférences */
+    height: auto; /* Permet à la hauteur de s'ajuster proportionnellement à la largeur */
+}
 #tempsActuel,
 #tempsTotal {
     font-size: 1.5em;
