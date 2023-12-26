@@ -79,7 +79,7 @@ const cheminAlbums = 'Album';
 function chargerAlbums() {
    // Utilisez une méthode pour obtenir la liste des albums (par exemple, AJAX ou fetch)
    // En supposant que vous avez déjà une liste des noms d'albums
-   const albums = ['mix', 'moderat'];
+   const albums = ['2000-2010', 'Film-Youtubeur','Mix'];
 
    // Créez les éléments HTML pour chaque album
    albums.forEach((album) => {
