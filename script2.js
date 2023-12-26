@@ -171,7 +171,7 @@ function afficherPlaylist(index) {
 
 function faireDefilerTableau() {
     const tableauContainer = document.getElementById('listeTitres');
-    tableauContainer.scrollTop = tableauContainer.scrollHeight;
+    tableauContainer.scrollTop = 50;
 }
 
 function lancerEcoute(titre) {
