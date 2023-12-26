@@ -84,7 +84,7 @@ button {
     flex-wrap: wrap;
 }
 #listeAlbums img {
-    max-width: 150px; /* Ajustez la valeur selon vos préférences */
+    max-width: 250px; /* Ajustez la valeur selon vos préférences */
     height: auto; /* Permet à la hauteur de s'ajuster proportionnellement à la largeur */
 }
 #tempsActuel,
