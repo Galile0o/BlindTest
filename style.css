@@ -191,6 +191,7 @@ button {
     border-radius: 5px;
     padding: 20px;
     margin-top: 20px;
+    overflow: hidden; /* Ajout de cette ligne pour cacher le débordement du tableau */
 }
 
 #listeTitres h3 {
@@ -202,6 +203,22 @@ button {
     font-size: 1.2em;
     margin: 5px 0;
 }
+
+#tableauCorps {
+    max-height: 200px; /* Réglez la hauteur maximale selon vos préférences */
+    overflow-y: auto; /* Ajoutez une barre de défilement si nécessaire */
+}
+
+#tableauCorps tr:hover {
+    background-color: #84A98D; /* Couleur de fond lorsqu'une ligne est survolée */
+    cursor: pointer;
+}
+
+.musique-jouee {
+    background-color: #527970 !important; /* Couleur de fond pour la musique actuellement jouée */
+    color: #CAD2C5 !important; /* Couleur du texte pour la musique actuellement jouée */
+}
+
 #listeTitres table {
     width: 100%;
     margin-top: 20px;
@@ -236,4 +253,3 @@ button {
     border-top-right-radius: 5px; /* Coins arrondis pour la dernière colonne */
     border-bottom-right-radius: 5px;
 }
-
