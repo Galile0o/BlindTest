@@ -320,9 +320,10 @@ document.getElementById('tableauCorps').addEventListener('click', function (even
 
         // Trouvez la musique correspondante dans votre liste de pistes
         const musique = pistes.find(piste => piste.titre === titreMusique);
-
+        indexPisteActuelle = pistes.findIndex(piste => piste.titre === titreMusique);
         // Si la musique est trouvée, lancez la lecture
         if (musique) {
+            afficherPlaylist(indexPisteActuelle)
             lancerEcoute(musique);
         }
     }
