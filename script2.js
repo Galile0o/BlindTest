@@ -116,7 +116,8 @@ function chargerPlaylist(nomAlbumtemp) {
 // Nouvelle fonction pour afficher la liste des titres
 function afficherListeTitres() {
     const tableauCorps = document.getElementById('tableauCorps');
-
+    tableauCorps.innerHTML = '';
+    
     for (let i = 0; i < pistes.length; i++) {
         const ligne = document.createElement('tr');
         const colonneTitre = document.createElement('td');
