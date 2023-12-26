@@ -138,7 +138,7 @@ function afficherListeTitres() {
 
 function afficherPlaylist(index) {
     afficherListeTitres();
-
+    faireDefilerTableau();
     // Assurez-vous que l'index est dans les limites de la liste des pistes
     if (index >= 0 && index < pistes.length) {
         // Désactivez le bouton pendant le traitement
@@ -169,7 +169,10 @@ function afficherPlaylist(index) {
     }
 }
 
-
+function faireDefilerTableau() {
+    const tableauContainer = document.getElementById('listeTitres');
+    tableauContainer.scrollTop = tableauContainer.scrollHeight;
+}
 
 function lancerEcoute(titre) {
     const lecteurAudio = document.getElementById('lecteurAudio');
