@@ -173,7 +173,7 @@ function afficherPlaylist(index) {
 
 function faireDefilerTableau() {
     const tableauContainer = document.getElementById('listeTitres');
-    defilage += 500;
+    defilage += 50;
     tableauContainer.scrollTop = defilage;
 }
 
