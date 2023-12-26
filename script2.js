@@ -309,7 +309,24 @@ function reculerPistePrecedente() {
 }
 
 
+// Ajoutez cet événement à la création de votre tableau
+document.getElementById('tableauCorps').addEventListener('click', function (event) {
+    const target = event.target;
+    
+    // Vérifiez si l'élément cliqué est une cellule du tableau
+    if (target.tagName === 'TD') {
+        // Obtenez le titre de la musique à partir de la cellule cliquée
+        const titreMusique = target.parentNode.querySelector('td:first-child').textContent;
 
+        // Trouvez la musique correspondante dans votre liste de pistes
+        const musique = pistes.find(piste => piste.titre === titreMusique);
+
+        // Si la musique est trouvée, lancez la lecture
+        if (musique) {
+            lancerEcoute(musique);
+        }
+    }
+});
 
 document.addEventListener("DOMContentLoaded", function() {
     const nomsEquipes = recupererNomsEquipes();
