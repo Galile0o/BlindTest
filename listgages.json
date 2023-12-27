@@ -1,5 +1,5 @@
 {
-  "gages": {
+  "gages": [
       "gage bonus 1",
       "gage bonus 2",
       "gage bonus 3",
@@ -9,5 +9,5 @@
       "gage temps 1",
       "gage temps 2",
       "gage temps 3"
-  }
+  ]
 }
