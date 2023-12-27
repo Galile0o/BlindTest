@@ -1,19 +1,13 @@
 {
   "gages": {
-    "bonus": [
       "gage bonus 1",
       "gage bonus 2",
-      "gage bonus 3"
-    ],
-    "malus": [
+      "gage bonus 3",
       "gage malus 1",
       "gage malus 2",
-      "gage malus 3"
-    ],
-    "temps": [
+      "gage malus 3",
       "gage temps 1",
       "gage temps 2",
       "gage temps 3"
-    ]
   }
 }
