@@ -402,12 +402,12 @@ document.addEventListener("DOMContentLoaded", function() {
             afficherEquipes();
         }
     
-        function recupererGageAleatoire(categorie) {
+        function recupererGageAleatoire() {
             const url = 'listgages.json';
             return fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                    const gagesCategorie = data.gages[categorie];
+                    const gagesCategorie = data.gages;
                     return gagesCategorie[Math.floor(Math.random() * gagesCategorie.length)];
                 })
                 .catch(error => {
@@ -417,13 +417,10 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         
         function attribuerGage() {
-            const gageCategories = ['bonus', 'malus', 'temps'];
-            const categorieChoisie = gageCategories[Math.floor(Math.random() * gageCategories.length)];
-        
-            recupererGageAleatoire(categorieChoisie)
+            recupererGageAleatoire()
                 .then(gageChoisi => {
                     // Afficher le gage (vous pouvez adapter cela selon vos besoins)
-                    alert(`Gage attribué ${categorieChoisie} : ${gageChoisi}`);
+                    alert(`Gage attribué : ${gageChoisi}`);
                 })
                 .catch(error => {
                     // Gérer l'erreur ici
